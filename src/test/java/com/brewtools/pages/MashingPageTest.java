@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class StartPageTest extends BaseTest {
+public class MashingPageTest extends BaseTest {
 
     @Test
-    public void page_renders() throws Exception {
-        pageRenders(StartPage.class);
+    public void renders() throws Exception {
+        pageRenders(MashingPage.class);
     }
 }

@@ -1,5 +1,6 @@
 package com.brewtools;
 
+import com.brewtools.pages.BasePage;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -34,6 +35,11 @@ public class BaseTest {
         @Override
         protected void configure() {
         }
+    }
+
+    protected void pageRenders(Class<? extends BasePage> clazz) {
+        getTester().startPage(clazz);
+        getTester().assertRenderedPage(clazz);
     }
 
 }

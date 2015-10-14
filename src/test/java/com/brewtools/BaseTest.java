@@ -41,8 +41,4 @@ public abstract class BaseTest {
         getTester().assertRenderedPage(clazz);
     }
 
-    protected void startPage(Class<? extends BasePage> clazz) {
-        getTester().startPage(clazz);
-    }
-
 }

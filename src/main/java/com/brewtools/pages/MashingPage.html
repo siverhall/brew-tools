@@ -14,15 +14,16 @@
             <div class="col-lg-5">
                 <form wicket:id="form">
                     <div class="form-group">
+                        <div wicket:id="grainWeightFeedback"></div>
                         <label>Grain weight (kg):</label>
                         <input type="text" class="form-control input-lg" wicket:id="grainWeight" />
                     </div>
                     <div class="form-group">
+                        <div wicket:id="preboilVolFeedback"></div>
                         <label>Preboil volume (L)</label>
                         <input type="text" class="form-control input-lg" wicket:id="preboilVol" />
                     </div>
                     <button class="btn btn-lg btn-primary" type="submit">Calculate &raquo;</button>
-                    <div wicket:id="feedback"></div>
                 </form>
             </div>
             <div class="col-lg-5 col-lg-offset-1">
@@ -35,8 +36,6 @@
             </div>
         </div>
     </div>
-    <!--<h1>Grainfather mash water calculation</h1>-->
-    <!--(Grain weight in kg x 2.7) + 3.5-->
 </wicket:extend>
 </body>
 </html>

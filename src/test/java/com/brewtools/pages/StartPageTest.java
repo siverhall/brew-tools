@@ -11,7 +11,7 @@ public class StartPageTest extends BaseTest {
 
     @Before
     public void setUp() throws Exception {
-        startPage(StartPage.class);
+        getTester().startPage(StartPage.class);
     }
 
     @Test

@@ -1,0 +1,20 @@
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.feedbackPanel {
+    list-style-type: none;
+    padding: 2px;
+}
+
+.feedbackPanel li { padding: 2px;}
+.feedbackPanel span { padding-left: 10px;}
+
+.feedbackPanelERROR {
+    background-color: #F78181;
+}

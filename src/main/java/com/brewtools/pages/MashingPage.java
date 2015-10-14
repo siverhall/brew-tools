@@ -3,7 +3,7 @@ package com.brewtools.pages;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -28,11 +28,16 @@ public class MashingPage extends BasePage {
 
         public MashForm(String id) {
             super(id);
-            add(new FeedbackPanel("feedback"));
-            grain = new RequiredTextField<>("grainWeight", Model.of(0.0), Double.class);
-            preboil = new RequiredTextField<>("preboilVol", Model.of(0.0), Double.class);
+            grain = initField("grainWeight");
+            preboil = initField("preboilVol");
             add(grain);
             add(preboil);
+        }
+
+        private RequiredTextField<Double> initField(String id) {
+            RequiredTextField<Double> input = new RequiredTextField<>(id, Model.of(0.0), Double.class);
+            add(new ComponentFeedbackPanel(id+"Feedback", input));
+            return input;
         }
 
         @Override

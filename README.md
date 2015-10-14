@@ -5,9 +5,9 @@ Wicket application containing various tools that may come in handy when brewing 
 **Currently implemented:** 
 
 - Grainfather mash & sparge water calculator
+- ABV calculator based on gravity readings
 
 **On the way:**
 
 - Priming calculator for carbonation
-- ABV calculator based on gravity readings
-- Recipe builder
+- Recipe builde

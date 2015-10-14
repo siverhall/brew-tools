@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BaseTest {
+public abstract class BaseTest {
 
     private WicketTester tester;
 
@@ -29,17 +29,20 @@ public class BaseTest {
         tester = new WicketTester(application);
     }
 
-
     private class TestModule extends AbstractModule {
+
 
         @Override
         protected void configure() {
         }
+
+    }
+    protected void pageRenders(Class<? extends BasePage> clazz) {
+        getTester().assertRenderedPage(clazz);
     }
 
-    protected void pageRenders(Class<? extends BasePage> clazz) {
+    protected void startPage(Class<? extends BasePage> clazz) {
         getTester().startPage(clazz);
-        getTester().assertRenderedPage(clazz);
     }
 
 }

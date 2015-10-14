@@ -2,7 +2,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    mash
+    <div class="jumbotron">
+        <h1>Mash & sparge water calculation</h1>
+
+        <p> Grainfather formula for mash water: (Grain weight in kg x 2.7) + 3.5<br>
+            Grainfather formula for sparge water: (Preboil volume - mash water volume) + (grain weight in kg x 0.8)
+        </p>
+        <br >
+        <br >
+        <div class="row">
+            <div class="col-lg-5">
+                <form wicket:id="form">
+                    <div class="form-group">
+                        <label>Grain weight (kg):</label>
+                        <input type="text" class="form-control input-lg" wicket:id="grainWeight" />
+                    </div>
+                    <div class="form-group">
+                        <label>Preboil volume (L)</label>
+                        <input type="text" class="form-control input-lg" wicket:id="preboilVol" />
+                    </div>
+                    <button class="btn btn-lg btn-primary" type="submit">Calculate &raquo;</button>
+                    <div wicket:id="feedback"></div>
+                </form>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1">
+                <h2>
+                <span wicket:id="mashWater"></span>
+                </h2>
+                <h2>
+                <span wicket:id="spargeWater"></span>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <!--<h1>Grainfather mash water calculation</h1>-->
+    <!--(Grain weight in kg x 2.7) + 3.5-->
 </wicket:extend>
 </body>
 </html>

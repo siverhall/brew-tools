@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+    <div class="jumbotron">
+        <h1>ABV calculator</h1>
+
+        <p> An easy way to estimate the ABV % based on OG and FG values
+        </p>
+        <br >
+        <br >
+        <div class="row">
+            <div class="col-lg-5">
+                <form wicket:id="form">
+                    <div wicket:id="og"></div>
+                    <div wicket:id="fg"></div>
+                    <button class="btn btn-lg btn-primary" type="submit">Calculate &raquo;</button>
+
+                </form>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1">
+                <h2>
+                    <span wicket:id="abv"></span>
+                </h2>
+            </div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>

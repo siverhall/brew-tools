@@ -12,7 +12,11 @@ public class DoubleField extends FormComponentPanel<Double> {
     private final RequiredTextField<Double> input;
 
     public DoubleField(String id, IModel<String> label) {
-        super(id, Model.of(0.0));
+        this(id, 0.0, label);
+    }
+
+    public DoubleField(String id, double object, IModel<String> label) {
+        super(id, Model.of(object));
         input = new RequiredTextField<>("input", getModel(), Double.class);
         add(new ComponentFeedbackPanel("feedback", input));
         add(new Label("label", label));

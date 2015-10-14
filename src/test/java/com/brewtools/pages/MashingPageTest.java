@@ -30,26 +30,26 @@ public class MashingPageTest extends BaseTest {
     @Test
     public void form_requires_grain_weight() throws Exception {
         submitForm("", "0");
-        getTester().assertContains(page.getString("grainWeight.Required"));
+        getTester().assertContains(page.getString("form.grainWeight.input.Required"));
     }
 
     @Test
     public void form_required_preboil_volume() throws Exception {
         submitForm("0", "");
-        getTester().assertContains(page.getString("preboilVol.Required"));
+        getTester().assertContains(page.getString("form.preboilVol.input.Required"));
     }
 
     @Test
     public void form_fields_require_number_inputs() throws Exception {
         submitForm("error", "error");
-        getTester().assertContains(page.getString("grainWeight.IConverter.Double"));
-        getTester().assertContains(page.getString("preboilVol.IConverter.Double"));
+        getTester().assertContains(page.getString("form.grainWeight.input.IConverter.Double"));
+        getTester().assertContains(page.getString("form.preboilVol.input.IConverter.Double"));
     }
 
     private void submitForm(String grain, String preboil) {
         FormTester form = getTester().newFormTester("form");
-        form.setValue("grainWeight", grain);
-        form.setValue("preboilVol", preboil);
+        form.setValue("grainWeight:input", grain);
+        form.setValue("preboilVol:input", preboil);
         form.submit();
     }
 }

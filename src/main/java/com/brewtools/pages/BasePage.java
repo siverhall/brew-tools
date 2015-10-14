@@ -10,6 +10,7 @@ public abstract class BasePage extends WebPage {
         super(parameters);
         add(new BookmarkablePageLink<Void>("homeLink", StartPage.class));
         add(new BookmarkablePageLink<Void>("mashLink", MashingPage.class));
+        add(new BookmarkablePageLink<Void>("abvLink", AbvPage.class));
 
     }
 }

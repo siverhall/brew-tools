@@ -1,11 +1,10 @@
 package com.brewtools.pages;
 
+import com.brewtools.components.DoubleField;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.RequiredTextField;
-import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 public class MashingPage extends BasePage {
@@ -23,21 +22,15 @@ public class MashingPage extends BasePage {
 
     private class MashForm extends Form<Void> {
 
-        private final RequiredTextField<Double> grain;
-        private final RequiredTextField<Double> preboil;
+        private final DoubleField grain;
+        private final DoubleField preboil;
 
         public MashForm(String id) {
             super(id);
-            grain = initField("grainWeight");
-            preboil = initField("preboilVol");
+            grain = new DoubleField("grainWeight", new ResourceModel("grainLabel"));
+            preboil = new DoubleField("preboilVol", new ResourceModel("preboilLabel"));
             add(grain);
             add(preboil);
-        }
-
-        private RequiredTextField<Double> initField(String id) {
-            RequiredTextField<Double> input = new RequiredTextField<>(id, Model.of(0.0), Double.class);
-            add(new ComponentFeedbackPanel(id+"Feedback", input));
-            return input;
         }
 
         @Override

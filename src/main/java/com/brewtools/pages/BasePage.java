@@ -11,6 +11,7 @@ public abstract class BasePage extends WebPage {
         add(new BookmarkablePageLink<Void>("homeLink", StartPage.class));
         add(new BookmarkablePageLink<Void>("mashLink", MashingPage.class));
         add(new BookmarkablePageLink<Void>("abvLink", AbvPage.class));
+        add(new BookmarkablePageLink<Void>("recipeLink", NewRecipePage.class));
 
     }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+    <form wicket:id="form">
+        <div class="col-lg-5">
+        <div class="form-group">
+            <label for="name">Recipe name</label>
+            <input id="name" type="text" class="form-control" wicket:id="name" />
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea rows="4" id="desc" class="form-control" wicket:id="description">
+            </textarea>
+        </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="form-group">
+                <label for="batch">Batch size</label>
+                <input id="batch" type="text" class="form-control" wicket:id="batchSize" />
+            </div>
+            <div class="form-group">
+                <label for="preboil">Preboil size</label>
+                <input id="preboil" type="text" class="form-control" wicket:id="preboilSize" />
+            </div>
+            <div class="form-group">
+                <label for="boil">Boil time</label>
+                <input id="boil" type="text" class="form-control" wicket:id="boilTime" />
+            </div>
+        </div>
+    </form>
+</wicket:extend>
+</body>
+</html>

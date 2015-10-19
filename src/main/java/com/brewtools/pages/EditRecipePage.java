@@ -1,6 +1,8 @@
 package com.brewtools.pages;
 
 import com.brewtools.dataobjects.Recipe;
+import com.brewtools.services.RecipeService;
+import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextArea;
@@ -9,20 +11,29 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.string.StringValue;
 
-public class NewRecipePage extends BasePage {
+import javax.inject.Inject;
 
-    public NewRecipePage(PageParameters parameters) {
+public class EditRecipePage extends BasePage {
+
+    @Inject
+    private RecipeService recipeService;
+
+    public EditRecipePage(PageParameters parameters) {
         super(parameters);
-
-        add(new RecipeForm("form", getRecipe()));
+        StringValue param = parameters.get("recipe");
+        if (param.isNull()) {
+            throw new RestartResponseException(RecipePage.class);
+        }
+        add(new RecipeForm("form", getRecipe(param)));
     }
 
-    private LoadableDetachableModel<Recipe> getRecipe() {
+    private LoadableDetachableModel<Recipe> getRecipe(StringValue param) {
         return new LoadableDetachableModel<Recipe>() {
             @Override
             protected Recipe load() {
-                return new Recipe();
+                return recipeService.load(param.toLongObject());
             }
         };
     }

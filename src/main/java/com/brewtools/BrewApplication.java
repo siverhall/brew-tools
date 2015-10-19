@@ -1,9 +1,6 @@
 package com.brewtools;
 
-import com.brewtools.pages.AbvPage;
-import com.brewtools.pages.MashingPage;
-import com.brewtools.pages.NewRecipePage;
-import com.brewtools.pages.StartPage;
+import com.brewtools.pages.*;
 import org.apache.wicket.ConverterLocator;
 import org.apache.wicket.IConverterLocator;
 import org.apache.wicket.Page;
@@ -21,7 +18,8 @@ public class BrewApplication extends WebApplication {
         mountPage("home", StartPage.class);
         mountPage("mash", MashingPage.class);
         mountPage("abv", AbvPage.class);
-        mountPackage("addrecipe", NewRecipePage.class);
+        mountPackage("addrecipe", EditRecipePage.class);
+        mountPackage("recipe", RecipePage.class);
     }
 
     @Override

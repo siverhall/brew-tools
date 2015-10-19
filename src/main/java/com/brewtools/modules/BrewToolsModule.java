@@ -8,7 +8,7 @@ public class BrewToolsModule extends ServletModule {
 
     @Override
     protected void configureServlets() {
-
+        install(new RepositoryModule());
         bind(WebApplication.class).to(BrewApplication.class);
     }
 }

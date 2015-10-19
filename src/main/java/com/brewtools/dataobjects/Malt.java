@@ -19,4 +19,11 @@ public class Malt {
 
     @ManyToOne(optional = false)
     private Recipe recipe;
+
+    public Malt() {
+    }
+
+    public Malt(Recipe recipe) {
+        this.recipe = recipe;
+    }
 }

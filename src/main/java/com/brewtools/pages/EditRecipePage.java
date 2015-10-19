@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
@@ -26,6 +27,7 @@ public class EditRecipePage extends BasePage {
         if (param.isNull()) {
             throw new RestartResponseException(RecipePage.class);
         }
+        add(new FeedbackPanel("feedback"));
         add(new RecipeForm("form", getRecipe(param)));
     }
 
@@ -47,6 +49,12 @@ public class EditRecipePage extends BasePage {
             add(new TextField<>("batchSize", new PropertyModel<>(getModel(), "batchSize"), Double.class));
             add(new TextField<>("preboilSize", new PropertyModel<>(getModel(), "preboilSize"), Double.class));
             add(new TextField<>("boilTime", new PropertyModel<>(getModel(), "boilTime"), Integer.class));
+        }
+
+        @Override
+        protected void onSubmit() {
+            recipeService.save(getModelObject());
+            success(getString("saved"));
         }
     }
 }

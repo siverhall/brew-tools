@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+    <div class="jumbotron">
+        <h1>Recipe builder</h1>
+
+        <p> Start create a new recipe by entering a name or edit an existing recipe
+        </p>
+        <br >
+        <div class="row">
+            <div class="col-lg-5">
+                <form wicket:id="form">
+                    <div class="form-group">
+                        <label for="name">Recipe name </label>
+                        <input type="text" id="name" class="form-control input-lg" wicket:id="name" />
+                    </div>
+                    <button class="btn btn-lg btn-primary" type="submit">Let's build it! &raquo;</button>
+                </form>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1">
+                <label>Edit recipes</label>
+                <div wicket:id="recipeList">
+                    <a href="#" wicket:id="recipeLink"><span wicket:id="recipeName"></span> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>

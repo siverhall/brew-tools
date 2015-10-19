@@ -19,7 +19,7 @@ public class BrewApplication extends WebApplication {
         mountPage("mash", MashingPage.class);
         mountPage("abv", AbvPage.class);
         mountPackage("addrecipe", EditRecipePage.class);
-        mountPackage("recipe", RecipePage.class);
+        mountPackage("recipe", RecipeStartPage.class);
     }
 
     @Override

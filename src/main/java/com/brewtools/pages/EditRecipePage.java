@@ -25,7 +25,7 @@ public class EditRecipePage extends BasePage {
         super(parameters);
         StringValue param = parameters.get("recipe");
         if (param.isNull()) {
-            throw new RestartResponseException(RecipePage.class);
+            throw new RestartResponseException(RecipeStartPage.class);
         }
         add(new FeedbackPanel("feedback"));
         add(new RecipeForm("form", getRecipe(param)));

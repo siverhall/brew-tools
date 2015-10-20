@@ -5,16 +5,9 @@ import com.brewtools.dataobjects.MaltType;
 import com.brewtools.dataobjects.Recipe;
 import com.brewtools.services.MaltService;
 import com.brewtools.services.MaltTypeService;
-import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
-import org.apache.wicket.markup.html.form.ChoiceRenderer;
-import org.apache.wicket.markup.html.form.DropDownChoice;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.RequiredTextField;
-import org.apache.wicket.markup.html.form.validation.IFormValidator;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
@@ -55,22 +48,59 @@ public class MaltPanel extends GenericPanel<Malt> {
         };
     }
 
+    private Malt getMalt() {
+        return getModelObject();
+    }
+
     private class MaltAdditionForm extends Form<Malt> {
+
+        private final TextField<Double> amount;
+        private final DropDownChoice<MaltType> type;
+
         public MaltAdditionForm(String id, IModel<Malt> model) {
             super(id, model);
-            add(new RequiredTextField<>("amount", new PropertyModel<>(getModel(), "amount"), Double.class));
-            add(new DropDownChoice<>("maltType", new PropertyModel<>(getModel(), "type"),
+            amount = new TextField<>("amount", new PropertyModel<>(getModel(), "amount"), Double.class);
+            type = createDropDown();
+
+            add(amount);
+            add(type);
+            add(deleteLink("delete"));
+        }
+
+        @Override
+        protected void onSubmit() {
+            if (inputIsValid()) {
+                maltService.save(getModelObject());
+            }
+        }
+
+        private AjaxLink<Malt> deleteLink(final String id) {
+            return new AjaxLink<Malt>(id, getModel()) {
+                @Override
+                public void onClick(AjaxRequestTarget target) {
+                    maltService.delete(getModelObject());
+                }
+
+                @Override
+                protected void onConfigure() {
+                    super.onConfigure();
+                    setVisibilityAllowed(getMalt() != null);
+                }
+            };
+        }
+
+        private DropDownChoice<MaltType> createDropDown() {
+            return new DropDownChoice<>("maltType", new PropertyModel<>(getModel(), "type"),
                     getTypes(), new ChoiceRenderer<MaltType>() {
                 @Override
                 public Object getDisplayValue(MaltType maltType) {
                     return maltType.getName();
                 }
-            }));
+            });
         }
 
-        @Override
-        protected void onSubmit() {
-            maltService.save(getModelObject());
+        private boolean inputIsValid() {
+            return !amount.getInput().isEmpty() && type.getModelObject() != null;
         }
 
         private IModel<? extends List<? extends MaltType>> getTypes() {

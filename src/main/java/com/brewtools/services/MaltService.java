@@ -9,4 +9,6 @@ public interface MaltService {
     void save(Malt malt);
 
     List<Malt> findByRecipe(Recipe recipe);
+
+    void delete(Malt malt);
 }

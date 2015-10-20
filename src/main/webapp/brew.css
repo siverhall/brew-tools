@@ -18,3 +18,7 @@ body {
 .feedbackPanelERROR {
     background-color: #F78181;
 }
+
+.darkred {
+    color: darkred;
+}

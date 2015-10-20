@@ -21,4 +21,9 @@ public class MaltServiceImpl implements MaltService {
     public List<Malt> findByRecipe(Recipe recipe) {
         return repo.findByRecipe(recipe);
     }
+
+    @Override
+    public void delete(Malt malt) {
+        repo.delete(malt);
+    }
 }

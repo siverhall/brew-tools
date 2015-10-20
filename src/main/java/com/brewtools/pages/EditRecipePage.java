@@ -79,6 +79,7 @@ public class EditRecipePage extends BasePage {
         protected void onSubmit() {
             recipeService.save(getModelObject());
             success(getString("saved"));
+            setResponsePage(new EditRecipePage(getPageParameters()));
         }
     }
 }

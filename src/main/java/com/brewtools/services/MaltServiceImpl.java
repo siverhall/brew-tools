@@ -14,7 +14,9 @@ public class MaltServiceImpl implements MaltService {
 
     @Override
     public void save(Malt malt) {
-        repo.save(malt);
+        if (malt.getAmount() != null && malt.getType() != null) {
+            repo.save(malt);
+        }
     }
 
     @Override

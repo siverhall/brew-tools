@@ -60,10 +60,10 @@ public class EditRecipePage extends BasePage {
             add(new ListView<Malt>("currentMalts", getMalts()) {
                 @Override
                 protected void populateItem(ListItem<Malt> item) {
-                    item.add(new MaltPanel("malt", item.getModel()));
+                    item.add(new MaltPanel("malt", item.getModel(), getModel()));
                 }
             });
-            add(new MaltPanel("newMalt", null, getModel()));
+            add(new MaltPanel("newMalt", getModel()));
         }
 
         private IModel<List<Malt>> getMalts() {

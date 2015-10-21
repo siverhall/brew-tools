@@ -5,9 +5,11 @@ import com.brewtools.dataobjects.MaltType;
 import com.brewtools.dataobjects.Recipe;
 import com.brewtools.services.MaltService;
 import com.brewtools.services.MaltTypeService;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.form.*;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
@@ -18,19 +20,21 @@ import java.util.List;
 
 public class MaltPanel extends GenericPanel<Malt> {
 
+    private IModel<? extends List<Malt>> malts;
     private IModel<Recipe> recipeModel;
     @Inject
     private MaltTypeService maltTypeService;
     @Inject
     private MaltService maltService;
 
-    public MaltPanel(String id, IModel<Malt> model, IModel<Recipe> recipeModel) {
+    public MaltPanel(String id, IModel<Malt> model, IModel<? extends List<Malt>> malts) {
         super(id, model);
-        this.recipeModel = recipeModel;
+        this.malts = malts;
     }
 
-    public MaltPanel(String id, IModel<Malt> model) {
-        super(id, model);
+    public MaltPanel(String id, IModel<Recipe> recipeModel) {
+        super(id);
+        this.recipeModel = recipeModel;
     }
 
     @Override
@@ -54,31 +58,25 @@ public class MaltPanel extends GenericPanel<Malt> {
 
     private class MaltAdditionForm extends Form<Malt> {
 
-        private final TextField<Double> amount;
-        private final DropDownChoice<MaltType> type;
-
         public MaltAdditionForm(String id, IModel<Malt> model) {
             super(id, model);
-            amount = new TextField<>("amount", new PropertyModel<>(getModel(), "amount"), Double.class);
-            type = createDropDown();
+            add(new TextField<>("amount", new PropertyModel<>(getModel(), "amount"), Double.class));
+            add(createDropDown());
 
-            add(amount);
-            add(type);
             add(deleteLink("delete"));
         }
 
         @Override
         protected void onSubmit() {
-            if (inputIsValid()) {
                 maltService.save(getModelObject());
-            }
         }
 
-        private AjaxLink<Malt> deleteLink(final String id) {
-            return new AjaxLink<Malt>(id, getModel()) {
+        private Link<Malt> deleteLink(final String id) {
+            return new Link<Malt>(id, getModel()) {
                 @Override
-                public void onClick(AjaxRequestTarget target) {
+                public void onClick() {
                     maltService.delete(getModelObject());
+                    malts.detach();
                 }
 
                 @Override
@@ -97,10 +95,6 @@ public class MaltPanel extends GenericPanel<Malt> {
                     return maltType.getName();
                 }
             });
-        }
-
-        private boolean inputIsValid() {
-            return !amount.getInput().isEmpty() && type.getModelObject() != null;
         }
 
         private IModel<? extends List<? extends MaltType>> getTypes() {

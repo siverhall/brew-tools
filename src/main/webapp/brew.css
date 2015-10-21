@@ -16,7 +16,11 @@ body {
 .feedbackPanel span { padding-left: 10px;}
 
 .feedbackPanelERROR {
-    background-color: #F78181;
+     background-color: #F78181;
+ }
+
+.feedbackPanelSUCCESS {
+    background-color: lightgreen;
 }
 
 .darkred {

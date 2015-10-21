@@ -78,8 +78,9 @@ public class EditRecipePage extends BasePage {
         @Override
         protected void onSubmit() {
             recipeService.save(getModelObject());
-            success(getString("saved"));
-            setResponsePage(new EditRecipePage(getPageParameters()));
+            EditRecipePage redirect = new EditRecipePage(getPageParameters());
+            redirect.success(getString("saved"));
+            setResponsePage(redirect);
         }
     }
 }

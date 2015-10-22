@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface MaltTypeService {
     List<MaltType> getTypes();
+
+    void save(MaltType maltType);
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+    <div wicket:id="feedback"></div>
+    <div class="col-lg-5">
+    <form wicket:id="maltType">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" wicket:id="name" class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="ppg">Potential (PPG)</label>
+            <input id="ppg" wicket:id="potential" class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="lovi">Lovibond (Color)</label>
+            <input id="lovi" wicket:id="lovibond" class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lrg">Save</button>
+        </div>
+    </form>
+        </div>
+    <div class="col-lg-5">
+        <div wicket:id="currentTypes">
+            <span wicket:id="typeName"></span>
+        </div>
+    </div>
+
+</wicket:extend>
+</body>
+</html>

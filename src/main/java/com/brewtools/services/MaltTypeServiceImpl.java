@@ -15,4 +15,9 @@ public class MaltTypeServiceImpl implements MaltTypeService {
     public List<MaltType> getTypes() {
         return repo.findAll();
     }
+
+    @Override
+    public void save(MaltType maltType) {
+        repo.save(maltType);
+    }
 }

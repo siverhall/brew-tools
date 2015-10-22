@@ -25,5 +25,6 @@ public class Recipe {
     private int boilTime;
     @Basic
     private String description;
-
+    @Basic
+    private Double efficiency;
 }

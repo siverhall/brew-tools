@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:panel>
+    <div class="col-lg-12">
+    <h4>Hop Varieties</h4>
     <div wicket:id="feedback"></div>
     <div class="col-lg-5">
         <form wicket:id="form">
@@ -15,9 +17,11 @@
         </form>
     </div>
     <div class="col-lg-5">
-        <div wicket:id="currentHops">
+        <label for="list">Current Hops</label>
+        <div id="list" wicket:id="currentHops">
             <span wicket:id="specName"></span>
         </div>
+    </div>
     </div>
 </wicket:panel>
 </body>

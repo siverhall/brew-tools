@@ -14,6 +14,7 @@ public class BrewToolsModule extends ServletModule {
         bind(MaltService.class).to(MaltServiceImpl.class);
         bind(MaltTypeService.class).to(MaltTypeServiceImpl.class);
         bind(RecipeService.class).to(RecipeServiceImpl.class);
+        bind(HopSpecService.class).to(HopSpecServiceImpl.class);
 
         bind(WebApplication.class).to(BrewApplication.class);
     }

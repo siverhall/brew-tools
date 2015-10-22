@@ -1,5 +1,6 @@
 package com.brewtools.modules;
 
+import com.brewtools.services.repos.HopSpecRepo;
 import com.brewtools.services.repos.MaltRepo;
 import com.brewtools.services.repos.MaltTypeRepo;
 import com.brewtools.services.repos.RecipeRepo;
@@ -20,5 +21,6 @@ public class RepositoryModule extends JpaRepositoryModule {
         binder.bind(MaltRepo.class).to(persistence);
         binder.bind(MaltTypeRepo.class).to(persistence);
         binder.bind(RecipeRepo.class).to(persistence);
+        binder.bind(HopSpecRepo.class).to(persistence);
     }
 }

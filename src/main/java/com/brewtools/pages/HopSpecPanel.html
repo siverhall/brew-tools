@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+    <div wicket:id="feedback"></div>
+    <div class="col-lg-5">
+        <form wicket:id="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" wicket:id="hopName" class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-lrg">Save</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-5">
+        <div wicket:id="currentHops">
+            <span wicket:id="specName"></span>
+        </div>
+    </div>
+</wicket:panel>
+</body>
+</html>

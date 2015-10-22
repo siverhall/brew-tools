@@ -1,6 +1,7 @@
 package com.brewtools;
 
 import com.brewtools.pages.BasePage;
+import com.brewtools.services.HopSpecService;
 import com.brewtools.services.MaltService;
 import com.brewtools.services.MaltTypeService;
 import com.brewtools.services.RecipeService;
@@ -24,6 +25,8 @@ public abstract class BaseTest {
     protected MaltService maltService;
     @Mock
     protected MaltTypeService maltTypeService;
+    @Mock
+    protected HopSpecService hopSpecService;
 
     protected final WicketTester getTester() {
         return tester;
@@ -47,6 +50,7 @@ public abstract class BaseTest {
             bind(RecipeService.class).toInstance(recipeService);
             bind(MaltService.class).toInstance(maltService);
             bind(MaltTypeService.class).toInstance(maltTypeService);
+            bind(HopSpecService.class).toInstance(hopSpecService);
         }
 
     }
